@@ -1,5 +1,5 @@
 const App: React.FC = () => {
-    return <div>MentorHub</div>;
+  return <div>MentorHub</div>;
 };
 
 export { App };
