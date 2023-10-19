@@ -1,27 +1,45 @@
-# React + TypeScript + Vite
+# MentorHub UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+UI часть приложения MentorHub
 
-Currently, two official plugins are available:
+### Клонирование репозитория
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Для работы в проекте требуется NodeJS не ниже `16.0`
 
-## Expanding the ESLint configuration
+Рекомендуемая версия **`node 18.18.2 / npm 9.8.1`**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+git clone git@github.com:ivnvMkhl/mentoring-ui.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+```bash
+npm install
+```
+
+### Scripts
+
+`npm run dev` - запуск девсервера
+
+`npm run build` - продакшн билд
+
+`npm run lint` - проверка линтером
+
+`npm run tsc` - проверка компилятором
+
+`npm run prettier` - проверка код форматером
+
+`npm run pre-commit` - скрипт для прекоммит хука
+
+`npm run prettify` - исправление код форматером по конфигу проекта
+
+### Demo stands
+
+- Front
+    
+    https://mentoring-ui.web.app/
+    
+- Back
+    
+    baseApi: https://imkhl-mentoring.glitch.me/
+    
+    swagger: https://imkhl-mentoring.glitch.me/docs/
