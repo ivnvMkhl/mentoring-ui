@@ -1,0 +1,7 @@
+.sideBar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--color-secondary);
+}
