@@ -32,6 +32,14 @@ npm install
 
 `npm run prettify` - исправление код форматером по конфигу проекта
 
+### Branches
+
+`develop` - защищенная ветка для следующего релиза, CI/CD в firebase
+
+`release/0.1` - пример имени для релизных веток (`release/{version}`)
+
+`MNT-42-FEATURE_add_http_service` - пример рабочих веток и назания PR (`MNT-{number}-{TYPE}_{issue_description}`)
+
 ### Demo stands
 
 - Front
