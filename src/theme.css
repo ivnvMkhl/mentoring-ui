@@ -1,0 +1,13 @@
+body {
+  /* main layout constants */
+  --side-bar-width: 260px;
+  --top-bar-height: 80px;
+
+  /* theme colors */
+  --color-primary: #074880;
+  --color-secondary: #2a71ae;
+  --color-surface-primary: #ffffff;
+  --color-surface-secondary: #f0f0f0;
+  --color-text-inverse: #fdfdfd;
+  --color-text-base: #000000;
+}
