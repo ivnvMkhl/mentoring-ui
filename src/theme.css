@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@500&display=swap');
+
 body {
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   /* main layout constants */
   --side-bar-width: 260px;
   --top-bar-height: 80px;

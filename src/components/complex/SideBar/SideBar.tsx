@@ -1,20 +1,15 @@
 import { FC } from 'react';
 
 import styles from './SideBar.module.css';
-import { Link } from 'react-router-dom';
+import { MenuItem } from '../MenuItem/MenuItem';
 import { Icon } from '../../primitives/Icon/Icon';
 
 const SideBar: FC = () => {
   return (
     <div className={styles.sideBar}>
-      {/* <MenuItem label='MentiList' link="/menti-list" icon={<Icon kind="UsergroupAdd" size="l" />} active={true} /> */}
-
-      <Link to="/menti-list">
-        <Icon kind="UsergroupAdd" size="l" />
-        MentiList
-      </Link>
-      <Link to="/lesson-list">LessonList</Link>
-      <Link to="/analytics">Analytics</Link>
+      <MenuItem label="Ученики" link="/menti-list" icon={<Icon kind="UsergroupAdd" size="l" />} />
+      <MenuItem label="Занятия" link="/lesson-list" icon={<Icon kind="Contacts" size="l" />} />
+      <MenuItem label="Аналитика" link="/analytics" icon={<Icon kind="BarChart" size="l" />} />
     </div>
   );
 };
