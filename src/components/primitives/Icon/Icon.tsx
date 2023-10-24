@@ -1,7 +1,9 @@
 import { FC } from 'react';
-import { UsergroupAdd } from './icons/UsergroupAdd/UsergroupAdd';
+import { UsergroupAdd } from './icons/UsergroupAdd';
+import { Contacts } from './icons/Contacts';
+import { BarChart } from './icons/BarChart';
 
-type IconKind = 'UsergroupAdd' | 'jkdfsh';
+type IconKind = 'UsergroupAdd' | 'Contacts' | 'BarChart';
 type IconSize = 's' | 'm' | 'l';
 
 type IconProps = {
@@ -19,6 +21,10 @@ const Icon: FC<IconProps> = ({ kind, size = 'm' }) => {
   switch (kind) {
     case 'UsergroupAdd':
       return <UsergroupAdd size={sizes[size]} />;
+    case 'Contacts':
+      return <Contacts size={sizes[size]} />;
+    case 'BarChart':
+      return <BarChart size={sizes[size]} />;
     default:
       return null;
   }

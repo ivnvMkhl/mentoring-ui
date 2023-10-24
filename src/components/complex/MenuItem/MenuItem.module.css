@@ -1,0 +1,18 @@
+.menuItem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  padding-left: 32px;
+  gap: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-text-inverse);
+}
+
+.link:hover {
+  text-decoration: underline;
+}
