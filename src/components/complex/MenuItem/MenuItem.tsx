@@ -13,7 +13,7 @@ const MenuItem: FC<Props> = ({ label, link, icon }) => {
     <Link to={link} className={styles.link}>
       <div className={styles.menuItem}>
         {icon}
-        <div className={styles.label}> {label} </div>
+        {label}
       </div>
     </Link>
   );
