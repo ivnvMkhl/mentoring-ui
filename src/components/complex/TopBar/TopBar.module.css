@@ -9,6 +9,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 16px;
+  font-size: 28px;
   background-color: var(--color-primary);
   color: var(--color-text-inverse);
 }

@@ -2,8 +2,9 @@ import { FC } from 'react';
 import { UsergroupAdd } from './icons/UsergroupAdd';
 import { Contacts } from './icons/Contacts';
 import { BarChart } from './icons/BarChart';
+import { Project } from './icons/Project';
 
-type IconKind = 'UsergroupAdd' | 'Contacts' | 'BarChart';
+type IconKind = 'UsergroupAdd' | 'Contacts' | 'BarChart' | 'Project';
 type IconSize = 's' | 'm' | 'l';
 
 type IconProps = {
@@ -25,6 +26,8 @@ const Icon: FC<IconProps> = ({ kind, size = 'm' }) => {
       return <Contacts size={sizes[size]} />;
     case 'BarChart':
       return <BarChart size={sizes[size]} />;
+    case 'Project':
+      return <Project size={sizes[size]} />;
     default:
       return null;
   }
