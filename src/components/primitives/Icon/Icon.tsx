@@ -2,8 +2,10 @@ import { FC } from 'react';
 import { UsergroupAdd } from './icons/UsergroupAdd';
 import { Contacts } from './icons/Contacts';
 import { BarChart } from './icons/BarChart';
+import { Project } from './icons/Project';
+import styles from './Icon.module.css';
 
-type IconKind = 'UsergroupAdd' | 'Contacts' | 'BarChart';
+type IconKind = 'UsergroupAdd' | 'Contacts' | 'BarChart' | 'Project';
 type IconSize = 's' | 'm' | 'l';
 
 type IconProps = {
@@ -20,11 +22,13 @@ const sizes: Record<IconSize, readonly [number, number]> = {
 const Icon: FC<IconProps> = ({ kind, size = 'm' }) => {
   switch (kind) {
     case 'UsergroupAdd':
-      return <UsergroupAdd size={sizes[size]} />;
+      return <UsergroupAdd size={sizes[size]} className={styles.icon} />;
     case 'Contacts':
-      return <Contacts size={sizes[size]} />;
+      return <Contacts size={sizes[size]} className={styles.icon} />;
     case 'BarChart':
-      return <BarChart size={sizes[size]} />;
+      return <BarChart size={sizes[size]} className={styles.icon} />;
+    case 'Project':
+      return <Project size={sizes[size]} className={styles.icon} />;
     default:
       return null;
   }

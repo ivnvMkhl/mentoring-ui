@@ -2,11 +2,19 @@ import { FC } from 'react';
 
 type Props = {
   size: readonly [number, number];
+  className: string;
 };
 
-const BarChart: FC<Props> = ({ size }) => {
+const BarChart: FC<Props> = ({ size, className }) => {
   return (
-    <svg height={size[0]} width={size[1]} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={className}
+      height={size[0]}
+      width={size[1]}
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <g id="BarChart">
         <path
           id="Vector"
