@@ -2,11 +2,19 @@ import { FC } from 'react';
 
 type Props = {
   size: readonly [number, number];
+  className: string;
 };
 
-const Contacts: FC<Props> = ({ size }) => {
+const Contacts: FC<Props> = ({ size, className }) => {
   return (
-    <svg height={size[0]} width={size[1]} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={className}
+      height={size[0]}
+      width={size[1]}
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <g id="Contacts" clip-path="url(#clip0_10_2054)">
         <path
           id="Vector"
