@@ -1,3 +1,9 @@
-.wrapper {
-  background-color: var(--color-surface-secondary);
+.setting svg path {
+  fill: var(--color-text-base);
+}
+
+.setting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

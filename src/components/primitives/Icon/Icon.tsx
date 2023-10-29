@@ -4,8 +4,10 @@ import { Contacts } from './icons/Contacts';
 import { BarChart } from './icons/BarChart';
 import { Project } from './icons/Project';
 import styles from './Icon.module.css';
+import { ArrowLeft } from './icons/ArrowLeft';
+import { Setting } from './icons/Setting';
 
-type IconKind = 'UsergroupAdd' | 'Contacts' | 'BarChart' | 'Project';
+type IconKind = 'UsergroupAdd' | 'Contacts' | 'BarChart' | 'Project' | 'ArrowLeft' | 'Setting';
 type IconSize = 's' | 'm' | 'l';
 
 type IconProps = {
@@ -29,6 +31,10 @@ const Icon: FC<IconProps> = ({ kind, size = 'm' }) => {
       return <BarChart size={sizes[size]} className={styles.icon} />;
     case 'Project':
       return <Project size={sizes[size]} className={styles.icon} />;
+    case 'ArrowLeft':
+      return <ArrowLeft size={sizes[size]} className={styles.icon} />;
+    case 'Setting':
+      return <Setting size={sizes[size]} className={styles.icon} />;
     default:
       return null;
   }
