@@ -1,13 +1,12 @@
 import { FC } from 'react';
-
-import styles from './LessonList.module.css';
 import { PageHeader } from '../../complex/PageHeader/PageHeader';
+import { PageWrapper } from '../../complex/PageWrapper/PageWrapper';
 
 const LessonList: FC = () => {
   return (
-    <div className={styles.wrapper}>
+    <PageWrapper>
       <PageHeader title="Занятия" />
-    </div>
+    </PageWrapper>
   );
 };
 
