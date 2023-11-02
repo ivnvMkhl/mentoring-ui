@@ -1,6 +1,6 @@
 .menuItem {
   width: 100%;
-  height: 50px;
+  height: 56px;
   display: flex;
   padding-left: 32px;
   gap: 16px;
@@ -9,10 +9,18 @@
 }
 
 .link {
+  display: flex;
   text-decoration: none;
   color: var(--color-text-inverse);
 }
 
 .link:hover {
   text-decoration: underline;
+}
+
+.active {
+  position: absolute;
+  width: 4px;
+  height: 56px;
+  background-color: var(--color-surface-primary);
 }
