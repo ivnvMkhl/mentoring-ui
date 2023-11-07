@@ -6,10 +6,8 @@ import { Project } from './icons/Project';
 import styles from './Icon.module.css';
 import { ArrowLeft } from './icons/ArrowLeft';
 import { Setting } from './icons/Setting';
-import { Bell } from './icons/Bell';
-import { User } from './icons/User';
 
-type IconKind = 'UsergroupAdd' | 'Contacts' | 'BarChart' | 'Project' | 'ArrowLeft' | 'Setting' | 'Bell' | 'User';
+type IconKind = 'UsergroupAdd' | 'Contacts' | 'BarChart' | 'Project' | 'ArrowLeft' | 'Setting';
 type IconSize = 's' | 'm' | 'l';
 
 type IconProps = {
@@ -37,10 +35,6 @@ const Icon: FC<IconProps> = ({ kind, size = 'm' }) => {
       return <ArrowLeft size={sizes[size]} className={styles.icon} />;
     case 'Setting':
       return <Setting size={sizes[size]} className={styles.icon} />;
-    case 'Bell':
-      return <Bell size={sizes[size]} className={styles.icon} />;
-    case 'User':
-      return <User size={sizes[size]} className={styles.icon} />;
     default:
       return null;
   }
