@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styles from './MentiList.module.css';
-import { Input } from '../../primitives/Input/Input';
-import { Button } from '../../primitives/Button/Button';
+import { Input } from '../../primitives/input/Input';
+import { Button } from '../../primitives/button/Button';
 import { Table } from '../../primitives/Table/Table';
 import { Form } from '../../primitives/Form/Form';
 import { PageHeader } from '../../complex/PageHeader/PageHeader';
