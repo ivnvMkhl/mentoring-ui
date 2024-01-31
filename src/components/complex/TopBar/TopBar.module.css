@@ -9,41 +9,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 16px;
   font-size: 28px;
   background-color: var(--color-primary);
   color: var(--color-text-inverse);
 }
 
 .topBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: var(--color-surface-primary);
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   z-index: 1;
-  padding: 0 56px;
-}
-
-.bellIcon svg path {
-  fill: var(--color-text-base);
-}
-
-.bellIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.userName {
-  font-family: Roboto;
-  font-size: 18px;
-  color: var(--color-text-base);
-  margin: 0 40px 0 10px;
-}
-
-.userSection {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 250px;
 }
