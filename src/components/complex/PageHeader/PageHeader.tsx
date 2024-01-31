@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 
 import styles from './PageHeader.module.css';
-import { Button } from '../../primitives/Button/Button';
+import { Button } from '../../primitives/button/Button';
 import { Icon } from '../../primitives/Icon/Icon';
 
 type PageHeaderProps = {
