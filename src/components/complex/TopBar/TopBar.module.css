@@ -35,7 +35,6 @@
 }
 
 .userName {
-  font-family: Roboto;
   font-size: 18px;
   color: var(--color-text-base);
   margin: 0 40px 0 10px;
