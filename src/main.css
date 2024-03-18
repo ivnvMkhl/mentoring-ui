@@ -2,6 +2,8 @@ body {
   margin: 0;
 }
 
-body * {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
