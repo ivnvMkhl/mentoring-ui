@@ -23,32 +23,31 @@ type Student = {
 const MentiList: FC = () => {
   const [students, setStudents] = useState<Student[]>();
   const [error, setError] = useState<Error>();
-  let content;
 
   useEffect(() => {
-    fetch('https://imkhl-mentoring-1.glitch.me/menti1111')
+    fetch('https://imkhl-mentoring-1.glitch.me/menti')
       .then((response) => response.json())
       .catch((error) => {
-        // console.error("Error:", error);
         setError(error);
       })
       .then((data: Student[]) => {
         setStudents(data);
-        console.log(data);
       });
   }, []);
 
   if (error) {
-    content = (
+    return (
       <div>
         <h2>Ошибка при загрузке студентов. Просьба повторить позже.</h2>
-        {/* <p>{error.message}</p> */}
       </div>
     );
   }
-
-  if (!error) {
-    content = (
+  return (
+    <PageWrapper>
+      <PageHeader title="Список учеников" onBackClick={() => undefined}>
+        <Button> Добавить ученика </Button>
+        <Button className={styles.setting} icon={<Icon kind="Setting" size="s" />} />
+      </PageHeader>
       <Table
         columns={[
           { title: 'Имя', dataIndex: 'Name', key: 'Name' },
@@ -59,27 +58,8 @@ const MentiList: FC = () => {
           { title: 'Телефон', dataIndex: 'Phone', key: 'Phone' },
         ]}
         dataSource={students}
+        loading
       ></Table>
-    );
-  }
-  return (
-    <PageWrapper>
-      <PageHeader title="Список учеников" onBackClick={() => undefined}>
-        <Button> Добавить ученика </Button>
-        <Button className={styles.setting} icon={<Icon kind="Setting" size="s" />} />
-      </PageHeader>
-      {/* <Table
-        columns={[
-          { title: 'Имя', dataIndex: 'Name', key: 'Name' },
-          { title: 'Уровень', dataIndex: 'Grade', key: 'Grade' },
-          { title: 'Telegram', dataIndex: 'Telegram', key: 'Telegram' },
-          { title: 'Email', dataIndex: 'Email', key: 'Email' },
-          { title: 'Город', dataIndex: 'Location', key: 'Location' },
-          { title: 'Телефон', dataIndex: 'Phone', key: 'Phone' },
-        ]}
-        dataSource={students}
-      ></Table> */}
-      {content}
     </PageWrapper>
   );
 };
