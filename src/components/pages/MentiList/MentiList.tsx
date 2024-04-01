@@ -5,6 +5,7 @@ import { Table } from '../../primitives/Table/Table';
 import { PageHeader } from '../../complex/PageHeader/PageHeader';
 import { Icon } from '../../primitives/Icon/Icon';
 import { PageWrapper } from '../../complex/PageWrapper/PageWrapper';
+import { notification } from '../../../helpers/notification/notification';
 
 type Student = {
   id: string;
@@ -25,10 +26,14 @@ const MentiList: FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://imkhl-mentoring-1.glitch.me/menti')
+    fetch('https://imkhl-mentoring-1.glitch.me/menti111')
       .then((response) => response.json())
       .catch(() => {
         setLoading(false);
+        notification.error({
+          message: 'Ошибка загрузки списка учеников',
+          description: 'Попробуйте обновить страницу',
+        });
       })
       .then((data: Student[]) => {
         setStudents(data);
