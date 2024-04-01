@@ -21,27 +21,21 @@ type Student = {
 };
 
 const MentiList: FC = () => {
-  const [students, setStudents] = useState<Student[]>();
-  const [error, setError] = useState<Error>();
+  const [students, setStudents] = useState<Student[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('https://imkhl-mentoring-1.glitch.me/menti')
       .then((response) => response.json())
-      .catch((error) => {
-        setError(error);
+      .catch(() => {
+        setLoading(false);
       })
       .then((data: Student[]) => {
         setStudents(data);
+        setLoading(false);
       });
   }, []);
 
-  if (error) {
-    return (
-      <div>
-        <h2>Ошибка при загрузке студентов. Просьба повторить позже.</h2>
-      </div>
-    );
-  }
   return (
     <PageWrapper>
       <PageHeader title="Список учеников" onBackClick={() => undefined}>
@@ -58,7 +52,7 @@ const MentiList: FC = () => {
           { title: 'Телефон', dataIndex: 'Phone', key: 'Phone' },
         ]}
         dataSource={students}
-        loading
+        loading={loading}
       ></Table>
     </PageWrapper>
   );
