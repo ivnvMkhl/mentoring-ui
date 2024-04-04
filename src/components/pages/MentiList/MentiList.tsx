@@ -26,18 +26,22 @@ const MentiList: FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://imkhl-mentoring-1.glitch.me/menti111')
+    fetch('https://imkhl-mentoring-1.glitch.me/menti')
       .then((response) => response.json())
+      .then((data: Student[]) => {
+        setStudents(data);
+        setLoading(false);
+        notification.success({
+          message: 'Выполнено',
+          description: 'Список учеников загружен успешно',
+        });
+      })
       .catch(() => {
         setLoading(false);
         notification.error({
           message: 'Ошибка загрузки списка учеников',
           description: 'Попробуйте обновить страницу',
         });
-      })
-      .then((data: Student[]) => {
-        setStudents(data);
-        setLoading(false);
       });
   }, []);
 

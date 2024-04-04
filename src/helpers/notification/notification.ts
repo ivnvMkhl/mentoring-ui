@@ -6,20 +6,26 @@ type NotificationConfig = ArgsProps;
 const DEFAULT_DURATION = 15;
 const DEFAULT_PLACEMENT = 'bottomRight';
 
-const defaultConfig: Partial<NotificationConfig> = { placement: DEFAULT_PLACEMENT, duration: DEFAULT_DURATION };
+const defaultConfig: Partial<NotificationConfig> = {
+  placement: DEFAULT_PLACEMENT,
+  duration: DEFAULT_DURATION,
+};
+
+const makeNotificationConfig = (config: NotificationConfig): NotificationConfig => {
+  return { ...defaultConfig, ...config };
+};
 
 export const notification = {
   error: (config: NotificationConfig) => {
-    antdNotification.error({ ...defaultConfig, ...config });
+    antdNotification.error(makeNotificationConfig(config));
   },
   warning: (config: NotificationConfig) => {
-    antdNotification.warning({ ...defaultConfig, ...config });
+    antdNotification.warning(makeNotificationConfig(config));
+  },
+  info: (config: NotificationConfig) => {
+    antdNotification.info(makeNotificationConfig(config));
+  },
+  success: (config: NotificationConfig) => {
+    antdNotification.success(makeNotificationConfig(config));
   },
 };
-
-//TODO 1. Добавить другие виды нотификации в notification
-//TODO 2. Сделать notification не мутабельным
-
-//TODO 3. Вместо плашки "No Data" при ошибке загрузки учеников
-//TODO    вывести блок Empty с описанием, с краным крестом и кнопкой для повторного запроса
-//TODO    https://ant.design/components/empty
