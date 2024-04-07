@@ -6,30 +6,20 @@ import { PageHeader } from '../../complex/PageHeader/PageHeader';
 import { Icon } from '../../primitives/Icon/Icon';
 import { PageWrapper } from '../../complex/PageWrapper/PageWrapper';
 import { notification } from '../../../helpers/notification/notification';
+import { colums } from './MentiList.constants.ts';
 
-type Student = {
-  id: string;
-  created_time: string;
-  last_edited_time: string;
-  relations: string[];
-  ID: number;
-  Grade: string;
-  Email: string;
-  Telegram: string;
-  Location: string[];
-  Phone: string;
-  Name: string;
-};
+import type { Menti } from '../../../interfaces/menti.interfaces';
 
 const MentiList: FC = () => {
-  const [students, setStudents] = useState<Student[]>([]);
+  const [mentiList, setMentiList] = useState<Menti[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('https://imkhl-mentoring-1.glitch.me/menti')
+      //TODO: пока запрос написан так до создания api сервиса
       .then((response) => response.json())
-      .then((data: Student[]) => {
-        setStudents(data);
+      .then((data: Menti[]) => {
+        setMentiList(data);
         setLoading(false);
         notification.success({
           message: 'Выполнено',
@@ -51,18 +41,7 @@ const MentiList: FC = () => {
         <Button> Добавить ученика </Button>
         <Button className={styles.setting} icon={<Icon kind="Setting" size="s" />} />
       </PageHeader>
-      <Table
-        columns={[
-          { title: 'Имя', dataIndex: 'Name', key: 'Name' },
-          { title: 'Уровень', dataIndex: 'Grade', key: 'Grade' },
-          { title: 'Telegram', dataIndex: 'Telegram', key: 'Telegram' },
-          { title: 'Email', dataIndex: 'Email', key: 'Email' },
-          { title: 'Город', dataIndex: 'Location', key: 'Location' },
-          { title: 'Телефон', dataIndex: 'Phone', key: 'Phone' },
-        ]}
-        dataSource={students}
-        loading={loading}
-      ></Table>
+      <Table columns={colums} dataSource={mentiList} loading={loading}></Table>
     </PageWrapper>
   );
 };

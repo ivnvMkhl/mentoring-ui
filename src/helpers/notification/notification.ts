@@ -1,18 +1,10 @@
 import { notification as antdNotification } from 'antd';
-import type { ArgsProps } from 'antd/es/notification';
+import DefaultConfig from './notification.constants.ts';
 
-type NotificationConfig = ArgsProps;
-
-const DEFAULT_DURATION = 15;
-const DEFAULT_PLACEMENT = 'bottomRight';
-
-const defaultConfig: Partial<NotificationConfig> = {
-  placement: DEFAULT_PLACEMENT,
-  duration: DEFAULT_DURATION,
-};
+import type NotificationConfig from './notification.interfaces.ts';
 
 const makeNotificationConfig = (config: NotificationConfig): NotificationConfig => {
-  return { ...defaultConfig, ...config };
+  return { ...DefaultConfig, ...config };
 };
 
 export const notification = {
@@ -28,4 +20,4 @@ export const notification = {
   success: (config: NotificationConfig) => {
     antdNotification.success(makeNotificationConfig(config));
   },
-};
+} as const;
