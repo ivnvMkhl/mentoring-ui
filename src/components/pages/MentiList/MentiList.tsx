@@ -9,7 +9,7 @@ import { notification } from '../../../helpers/notification/notification';
 import { colums } from './MentiList.constants.ts';
 
 import type { Menti } from '../../../interfaces/menti.interfaces';
-import { Empty } from '../../primitives/Empty/Empty.tsx';
+import { Message } from '../../primitives/Message/Message.tsx';
 //import { CloseCircleTwoTone, WarningTwoTone } from '@ant-design/icons';
 
 const MentiList: FC = () => {
@@ -46,7 +46,7 @@ const MentiList: FC = () => {
         dataSource={mentiList}
         loading={loading}
         locale={{
-          emptyText: loading ? ' ' : error ? <Empty msgType="error"></Empty> : <Empty msgType="warning"></Empty>,
+          emptyText: loading ? ' ' : error ? <Message kind="error" /> : <Message kind="warning" />,
         }}
       ></Table>
     </PageWrapper>
