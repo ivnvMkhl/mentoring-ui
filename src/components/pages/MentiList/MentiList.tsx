@@ -10,7 +10,6 @@ import { colums } from './MentiList.constants.ts';
 
 import type { Menti } from '../../../interfaces/menti.interfaces';
 import { Message } from '../../primitives/Message/Message.tsx';
-//import { CloseCircleTwoTone, WarningTwoTone } from '@ant-design/icons';
 
 const MentiList: FC = () => {
   const [mentiList, setMentiList] = useState<Menti[]>([]);
@@ -18,7 +17,7 @@ const MentiList: FC = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch('https://imkhl-mentoring-1.glitch.me/menti1111')
+    fetch('https://imkhl-mentoring-1.glitch.me/menti111111')
       //TODO: пока запрос написан так до создания api сервиса
       .then((response) => response.json())
       .then((data: Menti[]) => {
