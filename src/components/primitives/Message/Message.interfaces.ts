@@ -1,4 +1,4 @@
-export type Kind = 'error' | 'warning';
+export type Kind = 'error' | 'warning' | 'info';
 
 export type MessageProps = {
   kind: Kind;
