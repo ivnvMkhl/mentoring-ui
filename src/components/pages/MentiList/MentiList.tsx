@@ -9,10 +9,12 @@ import { notification } from '../../../helpers/notification/notification';
 import { colums } from './MentiList.constants.ts';
 
 import type { Menti } from '../../../interfaces/menti.interfaces';
+import { Message } from '../../primitives/Message/Message.tsx';
 
 const MentiList: FC = () => {
   const [mentiList, setMentiList] = useState<Menti[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetch('https://imkhl-mentoring-1.glitch.me/menti')
@@ -21,13 +23,10 @@ const MentiList: FC = () => {
       .then((data: Menti[]) => {
         setMentiList(data);
         setLoading(false);
-        notification.success({
-          message: 'Выполнено',
-          description: 'Список учеников загружен успешно',
-        });
       })
       .catch(() => {
         setLoading(false);
+        setError(true);
         notification.error({
           message: 'Ошибка загрузки списка учеников',
           description: 'Попробуйте обновить страницу',
@@ -41,7 +40,14 @@ const MentiList: FC = () => {
         <Button> Добавить ученика </Button>
         <Button className={styles.setting} icon={<Icon kind="Setting" size="s" />} />
       </PageHeader>
-      <Table columns={colums} dataSource={mentiList} loading={loading}></Table>
+      <Table
+        columns={colums}
+        dataSource={mentiList}
+        loading={loading}
+        locale={{
+          emptyText: loading ? ' ' : error ? <Message kind="error" /> : <Message kind="warning" />,
+        }}
+      ></Table>
     </PageWrapper>
   );
 };
