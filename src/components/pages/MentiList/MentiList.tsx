@@ -17,7 +17,7 @@ const MentiList: FC = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch('https://imkhl-mentoring-1.glitch.me/menti111111')
+    fetch('https://imkhl-mentoring-1.glitch.me/menti')
       //TODO: пока запрос написан так до создания api сервиса
       .then((response) => response.json())
       .then((data: Menti[]) => {
