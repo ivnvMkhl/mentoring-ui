@@ -11,6 +11,7 @@ import { ColumnFilterItem } from 'antd/lib/table/interface';
 
 import type { Menti } from '../../../interfaces/menti.interfaces';
 import { Message } from '../../primitives/Message/Message.tsx';
+import { apiService } from '../../../services/api/api.service.ts';
 
 const makeSorting = (key: keyof Menti) => (a: Menti, b: Menti) => String(a[key]).localeCompare(String(b[key]));
 
@@ -26,9 +27,8 @@ const MentiList: FC = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch('https://imkhl-mentoring-1.glitch.me/menti')
-      //TODO: пока запрос написан так до создания api сервиса
-      .then((response) => response.json())
+    apiService
+      .getMentiList()
       .then((data: Menti[]) => {
         setMentiList(data);
         setLoading(false);
