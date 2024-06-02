@@ -8,6 +8,7 @@ import { PageWrapper } from '../../complex/PageWrapper/PageWrapper';
 import { notification } from '../../../helpers/notification/notification';
 import { ColumnType } from 'antd/lib/table';
 import { ColumnFilterItem } from 'antd/lib/table/interface';
+import { Input } from 'antd';
 
 import type { Menti } from '../../../interfaces/menti.interfaces';
 import { Message } from '../../primitives/Message/Message.tsx';
@@ -94,9 +95,10 @@ const MentiList: FC = () => {
 
   return (
     <PageWrapper>
-      <PageHeader title="Список учеников" onBackClick={() => undefined}>
-        <Button> Добавить ученика </Button>
-        <Button className={styles.setting} icon={<Icon kind="Setting" size="s" />} />
+      <PageHeader title="Список учеников">
+        <Input.Search disabled className={styles.searcher} placeholder="Поиск" />
+        <Button disabled> Добавить ученика </Button>
+        <Button disabled className={styles.setting} icon={<Icon kind="Setting" size="s" />} />
       </PageHeader>
       <Table<Menti>
         rowKey={(row) => row.ID}
