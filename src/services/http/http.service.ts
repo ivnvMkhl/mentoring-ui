@@ -1,20 +1,18 @@
 import { Menti } from '../../interfaces/menti.interfaces';
 
-class HttpService {
+export class HttpService {
   constructor() {}
 
   readonly get = (url: string): Promise<Menti[]> => {
     return fetch(url).then((response) => response.json());
   };
-  readonly post = (url: string, data: Record<string, string>) => {
+  readonly post = (url: string, payload: unknown) => {
     return fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     }).then((response) => response.json());
   };
 }
-
-export const httpService = new HttpService();

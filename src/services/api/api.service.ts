@@ -1,13 +1,16 @@
 import { Menti } from '../../interfaces/menti.interfaces';
-import { httpService } from './http.service';
+import { HttpService } from '../http/http.service';
 
 class ApiService {
-  constructor(private readonly baseUrl: string) {}
+  constructor(
+    private readonly baseUrl: string,
+    private readonly httpService: HttpService,
+  ) {}
 
   readonly getMentiList = (): Promise<Menti[]> => {
     const url = `${this.baseUrl}/menti`;
-    return httpService.get(url);
+    return this.httpService.get(url);
   };
 }
 
-export const apiService = new ApiService('https://imkhl-mentoring-1.glitch.me');
+export const apiService = new ApiService('https://imkhl-mentoring-1.glitch.me', new HttpService());
