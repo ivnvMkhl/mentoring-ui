@@ -26,12 +26,13 @@ const MentiList: FC = () => {
   const [mentiList, setMentiList] = useState<Menti[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
+  const [filteredMentiList, setFilteredMentiList] = useState<Menti[]>([]);
   useEffect(() => {
     apiService
       .getMentiList()
       .then((data: Menti[]) => {
         setMentiList(data);
+        setFilteredMentiList(data);
         setLoading(false);
       })
       .catch(() => {
@@ -92,18 +93,24 @@ const MentiList: FC = () => {
     ],
     [mentiList],
   );
-
+  const handleChangeSearchText = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchText = event.target.value;
+    const filteredMentiList = mentiList.filter(({ Email, Grade, Name, Location, Phone, Telegram }) =>
+      `${Email}${Grade}${Location}${Name}${Phone}${Telegram}`.toLowerCase().includes(searchText.toLowerCase()),
+    );
+    setFilteredMentiList(filteredMentiList);
+  };
   return (
     <PageWrapper>
       <PageHeader title="Список учеников">
-        <Input.Search disabled className={styles.searcher} placeholder="Поиск" />
+        <Input.Search className={styles.searcher} placeholder="Поиск" onChange={handleChangeSearchText} />
         <Button disabled> Добавить ученика </Button>
         <Button disabled className={styles.setting} icon={<Icon kind="Setting" size="s" />} />
       </PageHeader>
       <Table<Menti>
         rowKey={(row) => row.ID}
         columns={columns}
-        dataSource={mentiList}
+        dataSource={filteredMentiList}
         loading={loading}
         locale={{
           emptyText: loading ? ' ' : error ? <Message kind="error" /> : <Message kind="warning" />,
