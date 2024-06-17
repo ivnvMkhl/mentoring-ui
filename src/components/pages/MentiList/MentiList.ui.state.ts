@@ -16,6 +16,10 @@ const makeFiltering = (key: keyof Menti) => (value: Key | boolean, record: Menti
   String(record[key]).includes(String(value));
 
 
+
+
+
+
 class MentiListUiState {
 
   constructor(){
@@ -25,12 +29,18 @@ class MentiListUiState {
   mentiList:Menti[] = [];
   loading = true;
   error = false; 
+  filteredMentiList: Menti[] = [];
 
-readonly loadMentiList = () => {
+
+
+
+
+  readonly loadMentiList = () => {
   apiService
     .getMentiList()
     .then((data: Menti[]) => {
       this.mentiList = data;
+      this.filteredMentiList = data;
       this.loading = false;
     })
     .catch(() => {
@@ -41,62 +51,67 @@ readonly loadMentiList = () => {
         description: 'Попробуйте обновить страницу',
       });
     });
-}
-
-get columns(): ColumnType<Menti>[]{
-  if (!this.mentiList.length) {
-    return []
   }
-  return [
-    {
-      title: 'Имя',
-      dataIndex: 'Name',
-      sorter: makeSorting('Name'),
-      sortDirections: ['descend', 'ascend'],
-      //TODO Выделить map в отдельную ф-цию, а затем прогнать рез-т этой ф-ции через словарик для уник.значений
-      filters: createFilterObjects('Name', this.mentiList),
-      filterMultiple: true,
-      onFilter: makeFiltering('Name'),
-    },
-    {
-      title: 'Уровень',
-      dataIndex: 'Grade',
-      sorter: makeSorting('Grade'),
-      sortDirections: ['descend', 'ascend'],
-      filters: createFilterObjects('Grade', this.mentiList),
-      filterMultiple: true,
-      onFilter: makeFiltering('Grade'),
-    },
 
-    {
-      title: 'Telegram',
-      dataIndex: 'Telegram',
-      sorter: makeSorting('Telegram'),
-      sortDirections: ['descend', 'ascend'],
-    },
+  get columns(): ColumnType<Menti>[]{
+    if (!this.mentiList.length) {
+      return []
+    }
+    return [
+      {
+        title: 'Имя',
+        dataIndex: 'Name',
+        sorter: makeSorting('Name'),
+        sortDirections: ['descend', 'ascend'],
+        //TODO Выделить map в отдельную ф-цию, а затем прогнать рез-т этой ф-ции через словарик для уник.значений
+        filters: createFilterObjects('Name', this.mentiList),
+        filterMultiple: true,
+        onFilter: makeFiltering('Name'),
+      },
+      {
+        title: 'Уровень',
+        dataIndex: 'Grade',
+        sorter: makeSorting('Grade'),
+        sortDirections: ['descend', 'ascend'],
+        filters: createFilterObjects('Grade', this.mentiList),
+        filterMultiple: true,
+        onFilter: makeFiltering('Grade'),
+      },
 
-    {
-      title: 'Email',
-      dataIndex: 'Email',
-      sorter: makeSorting('Email'),
-      sortDirections: ['descend', 'ascend'],
-    },
-    {
-      title: 'Город',
-      dataIndex: 'Location',
-      sorter: makeSorting('Location'),
-      sortDirections: ['descend', 'ascend'],
-      filters: createFilterObjects('Location', this.mentiList),
-      filterMultiple: true,
-      onFilter: makeFiltering('Location'),
-    },
-    { title: 'Телефон', dataIndex: 'Phone' },
-  ]
-}
+      {
+        title: 'Telegram',
+        dataIndex: 'Telegram',
+        sorter: makeSorting('Telegram'),
+        sortDirections: ['descend', 'ascend'],
+      },
 
+      {
+        title: 'Email',
+        dataIndex: 'Email',
+        sorter: makeSorting('Email'),
+        sortDirections: ['descend', 'ascend'],
+      },
+      {
+        title: 'Город',
+        dataIndex: 'Location',
+        sorter: makeSorting('Location'),
+        sortDirections: ['descend', 'ascend'],
+        filters: createFilterObjects('Location', this.mentiList),
+        filterMultiple: true,
+        onFilter: makeFiltering('Location'),
+      },
+      { title: 'Телефон', dataIndex: 'Phone' },
+    ]
+  }
 
-
-
+  handleChangeSearchText = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchText = event.target.value;
+    const filteredMentiList = this.mentiList.filter(({ Email, Grade, Name, Location, Phone, Telegram }) =>
+      `${Email}${Grade}${Location}${Name}${Phone}${Telegram}`.toLowerCase().includes(searchText.toLowerCase()),
+    );
+    this.filteredMentiList = filteredMentiList;
+  }
+  
 }
 
 export const mentiListUiState = new MentiListUiState();
