@@ -9,14 +9,21 @@ import { ColumnFilterItem, ColumnType } from 'antd/lib/table/interface';
 
 const makeSorting = (key: keyof Menti) => (a: Menti, b: Menti) => String(a[key]).localeCompare(String(b[key]));
 
-const createFilterObjects = (key: keyof Menti, list: Menti[]): ColumnFilterItem[] =>
-  list?.map((menti) => ({ text: String(menti[key]), value: String(menti[key]) }));
+const createFilterObjects = (key: keyof Menti, list: Menti[]): ColumnFilterItem[] => {
+  if (!list?.length) { return [] }
+  const filter:Record<string, ColumnFilterItem> = {};
+  const FilterObjectsArray: ColumnFilterItem[] = 
+    list?.map((menti) => ({ text: String(menti[key]), value: String(menti[key]) }))
+  
+  for(const obj of FilterObjectsArray) {
+    const objKey = JSON.stringify(obj);
+    filter[objKey] = obj;
+  }
+  return (Object.values(filter));
+};
 
 const makeFiltering = (key: keyof Menti) => (value: Key | boolean, record: Menti) =>
-  String(record[key]).includes(String(value));
-
-
-
+  String(record[key]) === (String(value));
 
 
 
@@ -30,9 +37,6 @@ class MentiListUiState {
   loading = true;
   error = false; 
   filteredMentiList: Menti[] = [];
-
-
-
 
 
   readonly loadMentiList = () => {
@@ -63,7 +67,7 @@ class MentiListUiState {
         dataIndex: 'Name',
         sorter: makeSorting('Name'),
         sortDirections: ['descend', 'ascend'],
-        //TODO Выделить map в отдельную ф-цию, а затем прогнать рез-т этой ф-ции через словарик для уник.значений
+        //TODO Прогнать результат этой функции через словарик для уник.значений
         filters: createFilterObjects('Name', this.mentiList),
         filterMultiple: true,
         onFilter: makeFiltering('Name'),
