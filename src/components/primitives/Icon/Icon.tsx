@@ -8,8 +8,18 @@ import { ArrowLeft } from './icons/ArrowLeft';
 import { Setting } from './icons/Setting';
 import { Bell } from './icons/Bell';
 import { User } from './icons/User';
+import { Save } from './icons/Save';
 
-type IconKind = 'UsergroupAdd' | 'Contacts' | 'BarChart' | 'Project' | 'ArrowLeft' | 'Setting' | 'Bell' | 'User';
+type IconKind =
+  | 'UsergroupAdd'
+  | 'Contacts'
+  | 'BarChart'
+  | 'Project'
+  | 'ArrowLeft'
+  | 'Setting'
+  | 'Bell'
+  | 'User'
+  | 'Save';
 type IconSize = 's' | 'm' | 'l';
 
 type IconProps = {
@@ -41,6 +51,8 @@ const Icon: FC<IconProps> = ({ kind, size = 'm' }) => {
       return <Bell size={sizes[size]} className={styles.icon} />;
     case 'User':
       return <User size={sizes[size]} className={styles.icon} />;
+    case 'Save':
+      return <Save size={sizes[size]} className={styles.icon} />;
     default:
       return null;
   }
