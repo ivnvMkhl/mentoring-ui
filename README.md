@@ -42,12 +42,12 @@ npm install
 
 ### Demo stands
 
-- Front
-    
-    https://mentoring-ui.web.app/
+- [Front](https://mentoring-ui.web.app/)
     
 - Back
     
     baseApi: https://imkhl-mentoring.glitch.me/
     
     swagger: https://imkhl-mentoring.glitch.me/docs/
+
+### [Code guide](https://github.com/ivnvMkhl/mentoring-ui/blob/develop/code_guide.md)
