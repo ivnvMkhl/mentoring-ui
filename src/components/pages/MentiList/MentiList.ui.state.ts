@@ -22,7 +22,7 @@ class MentiListUiState {
   loading = true;
   error = false;
   filteredMentiList: Menti[] = [];
-  addMentiIsVisible = false;
+  isAddMentiVisible = false;
 
   readonly loadMentiList = () => {
     apiService

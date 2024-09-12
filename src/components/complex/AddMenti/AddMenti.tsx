@@ -5,7 +5,7 @@ import { Input, TextArea } from '../../primitives/Input/Input';
 import { Button } from '../../primitives/Button/Button';
 import { Icon } from '../../primitives/Icon/Icon';
 import { Select } from '../../primitives/Select/Select';
-import { addMentiColumns } from './AddMenti.constants';
+import { addMentiFormItems } from './AddMenti.constants';
 import styles from './AddMenti.module.css';
 
 type AddMentiProps = {
@@ -16,7 +16,7 @@ type AddMentiProps = {
 const AddMenti: FC<AddMentiProps> = ({ labelCol = 6, wrapperCol = 18 }) => {
   return (
     <Form name="addMentiForm" labelCol={{ span: labelCol }} wrapperCol={{ span: wrapperCol }}>
-      {addMentiColumns.map((column) => {
+      {addMentiFormItems.map((column) => {
         return (
           <Form.Item
             label={column.title}

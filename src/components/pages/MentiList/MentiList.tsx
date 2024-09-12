@@ -17,7 +17,7 @@ import { AddMenti } from '../../complex/AddMenti/AddMenti.tsx';
 import { Drawer } from '../../primitives/Drawer/Drawer.tsx';
 
 const MentiList: FC = observer(() => {
-  const { loading, error, loadMentiList, columns, filteredMentiList, addMentiIsVisible } = mentiListUiState;
+  const { loading, error, loadMentiList, columns, filteredMentiList, isAddMentiVisible } = mentiListUiState;
 
   const handleChangeSearchText = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchText = event.target.value;
@@ -28,11 +28,11 @@ const MentiList: FC = observer(() => {
   };
 
   const handleClickAddMenti = () => {
-    mentiListUiState.addMentiIsVisible = true;
+    mentiListUiState.isAddMentiVisible = true;
   };
 
   const handleCloseDrawer = () => {
-    mentiListUiState.addMentiIsVisible = false;
+    mentiListUiState.isAddMentiVisible = false;
   };
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const MentiList: FC = observer(() => {
           emptyText: loading ? ' ' : error ? <Message kind="error" /> : <Message kind="warning" />,
         }}
       ></Table>
-      <Drawer width={500} title="Укажите информацию об ученике" open={addMentiIsVisible} onClose={handleCloseDrawer}>
+      <Drawer width={500} title="Укажите информацию об ученике" open={isAddMentiVisible} onClose={handleCloseDrawer}>
         <AddMenti labelCol={6} wrapperCol={18} />
       </Drawer>
     </PageWrapper>
