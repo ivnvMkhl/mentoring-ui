@@ -1,0 +1,10 @@
+services:
+  app:
+    build: 
+      network: host
+      context: .
+      dockerfile: Dockerfile
+      target: server
+    container_name: mentor_hub_ui
+    ports:
+      - 80:80
